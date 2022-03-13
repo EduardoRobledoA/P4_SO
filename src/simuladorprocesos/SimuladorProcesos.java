@@ -19,6 +19,7 @@ public class SimuladorProcesos {
         System.out.println("HOLA MUNDO");
         System.out.println("HOLA");
         System.out.println("HOLA2");
+        System.out.println("hola3");
     }
     
 }
