@@ -17,9 +17,7 @@ public class SimuladorProcesos {
     public static void main(String[] args) {
         // TODO code application logic here
         System.out.println("HOLA MUNDO");
-        System.out.println("HOLA");
-        System.out.println("HOLA2");
-        System.out.println("hola3");
+        System.out.println("Prueba desde LINUX");
     }
     
 }
