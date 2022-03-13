@@ -18,6 +18,7 @@ public class SimuladorProcesos {
         // TODO code application logic here
         System.out.println("HOLA MUNDO");
         System.out.println("HOLA");
+        System.out.println("HOLA2");
     }
     
 }
