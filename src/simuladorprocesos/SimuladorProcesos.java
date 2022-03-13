@@ -5,8 +5,7 @@
  */
 package simuladorprocesos;
 
-import java.util.LinkedList;
-import java.util.Queue;
+import java.util.*;
 
 /**
  *
@@ -18,23 +17,61 @@ public class SimuladorProcesos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        /*Creamos la Cola Indicando el tipo de dato
-        Link: https://yosoy.dev/colas-en-java/ */
-        Queue<Integer> cola=new LinkedList();
-        /*Insertamos datos*/
-            cola.offer(3);
-            cola.add(14);
-            cola.offer(12);
-            cola.add(7);
-            cola.offer(10);
-        /*Impresion de la Cola llena con los datos*/
-        System.out.println("Cola llena: " + cola);
-        /*Estructura repetitiva para desencolar*/
-        while(cola.poll()!=null){//Desencolamos y el valor se compara con null
-            System.out.println(cola.peek());//Muestra el nuevo Frente
+        
+        Scanner sn = new Scanner(System.in);
+        boolean salir = false;
+        int opcion; //Guardaremos la opcion del usuario
+ 
+        while (!salir) {
+ 
+            System.out.println("------------------------- SIMULADOR DE PROCESOS Y MEMORIA -------------------------");
+            System.out.println("1. Crear Proceso nuevo");
+            System.out.println("2. Ver estado actual del sistema");
+            System.out.println("3. Imprimir cola de procesos");
+            System.out.println("4. Ver proceso actual");
+            System.out.println("5. Ejecutar proceso actual");
+            System.out.println("6. Pasar al proceso siguiente");
+            System.out.println("7. Matar proceso actual");
+            System.out.println("8. Salir del programa");
+ 
+            try {
+ 
+                System.out.println("Escribe una de las opciones");
+                opcion = sn.nextInt();
+ 
+                switch (opcion) {
+                    case 1:
+                        System.out.println("Has seleccionado la opcion 1");
+                        break;
+                    case 2:
+                        System.out.println("Has seleccionado la opcion 2");
+                        break;
+                    case 3:
+                        System.out.println("Has seleccionado la opcion 3");
+                        break;
+                    case 4:
+                        System.out.println("Has seleccionado la opcion 4");
+                        break;
+                    case 5:
+                        System.out.println("Has seleccionado la opcion 5");
+                        break;
+                    case 6:
+                        System.out.println("Has seleccionado la opcion 6");
+                        break;
+                    case 7:
+                        System.out.println("Has seleccionado la opcion 7");
+                        break;
+                    case 8:
+                        salir = true;
+                        break;
+                    default:
+                        System.out.println("Solo números entre 1 y 8");
+                }
+            } catch (InputMismatchException e) {
+                System.out.println("Debes insertar un número");
+                sn.next();
+            }
         }
-        /*Muestra null debido a que la cola ya esta vacia*/
-        System.out.println(cola.peek()); 
     }
     
 }
