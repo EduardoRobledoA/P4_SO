@@ -41,7 +41,11 @@ public class SimuladorProcesos {
  
                 switch (opcion) {
                     case 1:
-                        System.out.println("Has seleccionado la opcion 1");
+                        System.out.println("\nHas seleccionado la opcion 1");
+                        CrearProceso NewProces = new CrearProceso();
+                        Proceso proc = NewProces.Crear();
+                        NewProces.Asignacion_Id(proc);
+                        
                         break;
                     case 2:
                         System.out.println("Has seleccionado la opcion 2");
