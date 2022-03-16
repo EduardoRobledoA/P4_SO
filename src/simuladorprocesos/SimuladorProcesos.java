@@ -43,8 +43,7 @@ public class SimuladorProcesos {
                     case 1:
                         System.out.println("\nHas seleccionado la opcion 1");
                         CrearProceso NewProces = new CrearProceso();
-                        Proceso proc = NewProces.Crear();
-                        NewProces.Asignacion_Id(proc);
+                        Proceso proc = NewProces.Crear();                 
                         
                         break;
                     case 2:
