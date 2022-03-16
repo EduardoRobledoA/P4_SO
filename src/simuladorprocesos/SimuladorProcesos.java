@@ -17,7 +17,7 @@ public class SimuladorProcesos {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        
+        Memoria RAM = new Memoria(2048);
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
@@ -43,11 +43,12 @@ public class SimuladorProcesos {
                     case 1:
                         System.out.println("\nHas seleccionado la opcion 1");
                         CrearProceso NewProces = new CrearProceso();
-                        Proceso proc = NewProces.Crear();                 
-                        
+                        Proceso proc = NewProces.Crear(RAM);                 
                         break;
                     case 2:
                         System.out.println("Has seleccionado la opcion 2");
+                        
+                        
                         break;
                     case 3:
                         System.out.println("Has seleccionado la opcion 3");

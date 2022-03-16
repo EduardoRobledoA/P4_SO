@@ -19,14 +19,18 @@ import java.util.logging.Logger;
  */
 public class CrearProceso {
 
+    /**
+     *
+     */
     public CrearProceso() {
     }
     
     /**
      *
-     * @return
+     * @param memoria
+     * @return proceso, se retorna un objeto proceso
      */
-    public Proceso Crear(){
+    public Proceso Crear(Memoria memoria){
         String nombre;
         int i;
         Scanner teclado = new Scanner(System.in);
@@ -40,18 +44,24 @@ public class CrearProceso {
         for(i=0;i<3;i++){
             System.out.println("Creando " + proceso.getNombre()+"..." );
             try {
-                Thread.sleep(500);
+                Thread.sleep(550);
             } catch (InterruptedException ex) {
                 Logger.getLogger(CrearProceso.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
         System.out.println("Proceso "+nombre+" ha sido creado");
+        
         this.asignacion_Id(proceso);
-        this.asignacion_Instrucciones(proceso);
+        this.asignacion_Instrucciones(proceso);  
         this.asignacion_Memoria(proceso);
+        System.out.println("Memoria Disp Actualizada: "+this.insercion_Proceso(memoria,proceso));
         return proceso;
     }
     
+    /**
+     *
+     * @param proceso
+     */
     public void asignacion_Id(Proceso proceso){
         String id;
         Random id_num = new Random();
@@ -60,6 +70,10 @@ public class CrearProceso {
         System.out.println("\nid: "+proceso.getId_Proc());
     }
     
+    /**
+     *
+     * @param proceso
+     */
     public void asignacion_Instrucciones(Proceso proceso){
         int instrucciones = 31;
         Random no_ins = new Random();
@@ -67,9 +81,13 @@ public class CrearProceso {
         while(instrucciones>30)
             instrucciones = (no_ins.nextInt(30)+10);
         proceso.setNo_Instrucciones(instrucciones);
-        System.out.println("# inst "+proceso.getNo_Instrucciones());      
+        System.out.println("# inst "+proceso.getNo_Instrucciones());    
     }
     
+    /**
+     *
+     * @param proceso
+     */
     public void asignacion_Memoria(Proceso proceso){
         int inst = proceso.getNo_Instrucciones();
         
@@ -83,5 +101,23 @@ public class CrearProceso {
             proceso.setMemoria(512);
         
         System.out.println("Memoria ocupada: "+proceso.getMemoria());
+    }
+    
+    /**
+     *
+     * @param memoria
+     * @param proceso
+     * @return
+     */
+    public int insercion_Proceso(Memoria memoria, Proceso proceso){
+        
+        int mem_Ocupada = proceso.getMemoria();
+        int mem_Disponible = memoria.getCapacidad();
+
+        if(mem_Disponible>mem_Ocupada)
+            memoria.insertar_Proceso(proceso);
+            
+        memoria.setCapacidad(mem_Disponible-mem_Ocupada);
+        return memoria.getCapacidad();
     }
 }

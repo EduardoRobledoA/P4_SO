@@ -1,13 +1,6 @@
 package simuladorprocesos;
 
-
 import simuladorprocesos.CrearProceso;
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
 /**
  *
@@ -19,11 +12,16 @@ public class Proceso {
     int memoria;
     String nombre;
     int no_Instrucciones;
-    int lugar_Cola;
+    int id_Memoria;
             
     public Proceso() {
     }
-   
+
+    public Proceso(String nombre) {
+        this.nombre = nombre;
+    }
+    
+    
 
     public String getId_Proc() {
         return id_Proc;
@@ -65,13 +63,19 @@ public class Proceso {
         this.no_Instrucciones = no_Instrucciones;
     }
 
-    public int getLugar_Cola() {
-        return lugar_Cola;
+    public int getid_Memoria() {
+        return id_Memoria;
     }
 
-    public void setLugar_Cola(int lugar_Cola) {
-        this.lugar_Cola = lugar_Cola;
+    public void setid_Memoria(int id_Memoria) {
+        this.id_Memoria = id_Memoria;
     }
+
+    @Override
+    public String toString() {
+        return "Proceso{" + "id_Proc=" + id_Proc + ", tipo_Proc=" + tipo_Proc + ", memoria=" + memoria + ", nombre=" + nombre + ", no_Instrucciones=" + no_Instrucciones + ", id_Memoria=" + id_Memoria + '}';
+    }
+    
     
     
     
