@@ -18,6 +18,7 @@ public class SimuladorProcesos {
      */
     public static void main(String[] args) {
         Memoria RAM = new Memoria(2048);
+        ColaProcesos QUEUE = new ColaProcesos();
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
         int opcion; //Guardaremos la opcion del usuario
@@ -43,31 +44,43 @@ public class SimuladorProcesos {
                     case 1:
                         System.out.println("\nHas seleccionado la opcion 1");
                         CrearProceso NewProces = new CrearProceso();
-                        Proceso proc = NewProces.Crear(RAM);                 
+                        Proceso proc = NewProces.Crear(RAM);
+                        QUEUE.insertar_Proceso(proc);
                         break;
+
                     case 2:
                         System.out.println("Has seleccionado la opcion 2");
-                        
-                        
+                        QUEUE.estado_actual_sistema();
                         break;
+
                     case 3:
                         System.out.println("Has seleccionado la opcion 3");
+                        QUEUE.imprimir_cola_procesos();
                         break;
                     case 4:
                         System.out.println("Has seleccionado la opcion 4");
+                        QUEUE.ver_proceso_actual();
                         break;
+
                     case 5:
                         System.out.println("Has seleccionado la opcion 5");
+
                         break;
+
                     case 6:
                         System.out.println("Has seleccionado la opcion 6");
+                        QUEUE.pasar_proceso_siguiente();
                         break;
+
                     case 7:
                         System.out.println("Has seleccionado la opcion 7");
+                        QUEUE.matar_proceso_actual();
                         break;
+
                     case 8:
                         salir = true;
                         break;
+                        
                     default:
                         System.out.println("Solo números entre 1 y 8");
                 }
