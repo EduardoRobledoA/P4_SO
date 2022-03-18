@@ -11,6 +11,7 @@ public class Proceso {
     int memoria;
     String nombre;
     int no_Instrucciones;
+    int no_InstuccionesEjecutadas = 0;
     int dirBase;
     int dirLimite;
             
@@ -52,6 +53,14 @@ public class Proceso {
 
     public void setNo_Instrucciones(int no_Instrucciones) {
         this.no_Instrucciones = no_Instrucciones;
+    }
+    
+    public int getNo_InstruccionesEjecutadas() {
+        return no_InstuccionesEjecutadas;
+    }
+
+    public void setNo_InstruccionesEjecutadas(int no_Instrucciones) {
+        this.no_InstuccionesEjecutadas = no_Instrucciones;
     }
 
     public int getDirBase() {

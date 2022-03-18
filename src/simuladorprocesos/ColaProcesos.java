@@ -106,7 +106,7 @@ public class ColaProcesos {
             System.out.println("\n >>>> Proceso actual: \n");
             System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
-            +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
+            +"  Instrucciones ejecutadas:"+temporal.getNo_InstruccionesEjecutadas()+"\n"
             +"  Espacio ocupado:"+temporal.getMemoria()+"\n"        
             +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
         }
@@ -124,7 +124,7 @@ public class ColaProcesos {
             Proceso temporal = NuevaColaProcesos.removeFirst();
             System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
-            +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
+            +"  Instrucciones ejecutadas:"+temporal.getNo_InstruccionesEjecutadas()+"\n"
             +"  Espacio ocupado:"+temporal.getMemoria()+"\n"        
             +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
 
@@ -139,7 +139,9 @@ public class ColaProcesos {
             }
 
             if (temporal.getNo_Instrucciones() <= 5) { //Proceso termina su ejecucion
-
+                
+                int totalInstrucciones = temporal.getNo_Instrucciones()+temporal.getNo_InstruccionesEjecutadas();
+                temporal.setNo_InstruccionesEjecutadas(totalInstrucciones);
                 temporal.setNo_Instrucciones(0);
                 temporal.setMemoria(0);
                 ColaProcesosFinalizados.add(temporal);
@@ -151,11 +153,14 @@ public class ColaProcesos {
                 int memoActual = temporal.getNo_Instrucciones();
                 temporal.setNo_Instrucciones(memoActual-5);
                 
+                memoActual = temporal.getNo_InstruccionesEjecutadas();
+                temporal.setNo_InstruccionesEjecutadas(memoActual+5);
+                
                 NuevaColaProcesos.add(temporal);
                 System.out.println("\n >>>>>>> Proceso despues de ejecucion: \n");
                 System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
                 +"  Instrucciones restantes:"+temporal.getNo_Instrucciones()+"\n"
-                +"  Instrucciones ejecutadas: 5\n"
+                +"  Instrucciones que se ejecutaron: 5\n"
                 +"  Espacio ocupado:"+temporal.getMemoria()+"\n"        
                 +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
 
@@ -176,7 +181,7 @@ public class ColaProcesos {
             Proceso temporal = NuevaColaProcesos.removeFirst();
             System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
-            +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
+            +"  Instrucciones ejecutadas:"+temporal.getNo_InstruccionesEjecutadas()+"\n"
             +"  Espacio ocupado:"+temporal.getMemoria()+"\n"        
             +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
 
@@ -195,7 +200,7 @@ public class ColaProcesos {
             System.out.println("\n >>>>>>> Proceso activo actual: \n");
             System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
-            +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
+            +"  Instrucciones ejecutadas:"+temporal.getNo_InstruccionesEjecutadas()+"\n"
             +"  Espacio ocupado:"+temporal.getMemoria()+"\n"        
             +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
 
@@ -224,7 +229,7 @@ public class ColaProcesos {
             Proceso temporal = NuevaColaProcesos.removeFirst();
             System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
-            +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
+            +"  Instrucciones ejecutadas:"+temporal.getNo_InstruccionesEjecutadas()+"\n"
             +"  Espacio ocupado:"+temporal.getMemoria()+"\n"
             +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
             ColaProcesosEliminados.add(temporal);
