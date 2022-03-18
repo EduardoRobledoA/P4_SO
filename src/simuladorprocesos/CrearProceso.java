@@ -114,10 +114,16 @@ public class CrearProceso {
 
         memoria.insertar_Proceso(proceso);   
         memoria.setCapacidad(mem_Disponible-mem_Ocupada);
+        
+        int base = 0;
+        int limite =base+mem_Ocupada;
+        proceso.setDirBase(base);
+        proceso.setDirLimite(limite);
+        
         System.out.println("\nid: "+proceso.getId_Proc());
         System.out.println("# instrucciones: "+proceso.getNo_Instrucciones()); 
         System.out.println("Memoria ocupada: "+proceso.getMemoria());
-        System.out.println("Memoria disponible actualizada: "+memoria.getCapacidad());
+        System.out.println("Memoria disponible actualizada: "+memoria.getCapacidad()+"\n");
     }
     
     public boolean validacionMemoria(Memoria memoria, Proceso proceso){
@@ -127,10 +133,10 @@ public class CrearProceso {
         if(mem_Disponible>mem_Ocupada)
             return true;
         else{
-            System.out.println("No hay memoria disponible");
-            System.out.println("Memoria ocupada: "+proceso.getMemoria());
+            System.out.println("\nNo hay memoria disponible");
+            System.out.println("Memoria ocupada por el proceso: "+proceso.getMemoria());
             System.out.println("Memoria disponible : "+memoria.getCapacidad());
-            System.out.println("Fallo al crear el proceso...");
+            System.out.println("Error al crear el proceso...\n");
             return false;
         }    
     }

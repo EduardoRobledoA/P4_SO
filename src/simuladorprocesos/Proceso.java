@@ -8,11 +8,11 @@ import simuladorprocesos.CrearProceso;
  */
 public class Proceso {
     String id_Proc;
-    int tipo_Proc;
     int memoria;
     String nombre;
     int no_Instrucciones;
-    int id_Memoria;
+    int dirBase;
+    int dirLimite;
             
     public Proceso() {
     }
@@ -20,7 +20,6 @@ public class Proceso {
     public Proceso(String nombre) {
         this.nombre = nombre;
     }
-    
     
 
     public String getId_Proc() {
@@ -30,15 +29,7 @@ public class Proceso {
     public void setId_Proc(String id_Proc) {
         this.id_Proc = id_Proc;
     }
-
-    public int getTipo_Proc() {
-        return tipo_Proc;
-    }
-
-    public void setTipo_Proc(int tipo_Proc) {
-        this.tipo_Proc = tipo_Proc;
-    }
-
+    
     public int getMemoria() {
         return memoria;
     }
@@ -63,20 +54,21 @@ public class Proceso {
         this.no_Instrucciones = no_Instrucciones;
     }
 
-    public int getid_Memoria() {
-        return id_Memoria;
+    public int getDirBase() {
+        return dirBase;
     }
 
-    public void setid_Memoria(int id_Memoria) {
-        this.id_Memoria = id_Memoria;
+    public void setDirBase(int dirBase) {
+        this.dirBase = dirBase;
     }
 
-    @Override
-    public String toString() {
-        return "Proceso{" + "id_Proc=" + id_Proc + ", tipo_Proc=" + tipo_Proc + ", memoria=" + memoria + ", nombre=" + nombre + ", no_Instrucciones=" + no_Instrucciones + ", id_Memoria=" + id_Memoria + '}';
+    public int getDirLimite() {
+        return dirLimite;
     }
-    
-    
+
+    public void setDirLimite(int dirLimite) {
+        this.dirLimite = dirLimite;
+    }
     
     
 }

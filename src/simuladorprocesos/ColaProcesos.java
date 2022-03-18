@@ -43,7 +43,9 @@ public class ColaProcesos {
 
             }
             System.out.println();
-        
+            
+            System.out.println("Localidales            proceso");
+            
         }
 
         i=1;
@@ -105,7 +107,8 @@ public class ColaProcesos {
             System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
             +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
-            +"  Direcciones de memoria asignadas:"+temporal.getNo_Instrucciones()+"\n");
+            +"  Espacio ocupado:"+temporal.getMemoria()+"\n"        
+            +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
         }
 
     }
@@ -122,7 +125,8 @@ public class ColaProcesos {
             System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
             +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
-            +"  Direcciones de memoria asignadas:"+temporal.getNo_Instrucciones()+"\n");
+            +"  Espacio ocupado:"+temporal.getMemoria()+"\n"        
+            +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
 
             System.out.println("\n >>>> Ejecutando proceso actual\n");
             for(i=0;i<3;i++){
@@ -150,9 +154,10 @@ public class ColaProcesos {
                 NuevaColaProcesos.add(temporal);
                 System.out.println("\n >>>>>>> Proceso despues de ejecucion: \n");
                 System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
-                +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
-                +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
-                +"  Direcciones de memoria asignadas:"+temporal.getNo_Instrucciones()+"\n");
+                +"  Instrucciones restantes:"+temporal.getNo_Instrucciones()+"\n"
+                +"  Instrucciones ejecutadas: 5\n"
+                +"  Espacio ocupado:"+temporal.getMemoria()+"\n"        
+                +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
 
             }
 
@@ -172,7 +177,8 @@ public class ColaProcesos {
             System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
             +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
-            +"  Direcciones de memoria asignadas:"+temporal.getNo_Instrucciones()+"\n");
+            +"  Espacio ocupado:"+temporal.getMemoria()+"\n"        
+            +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
 
             System.out.println("\n >>>> Pasando al siguiente proceso\n");
             for(i=0;i<3;i++){
@@ -190,7 +196,8 @@ public class ColaProcesos {
             System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
             +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
-            +"  Direcciones de memoria asignadas:"+temporal.getNo_Instrucciones()+"\n");
+            +"  Espacio ocupado:"+temporal.getMemoria()+"\n"        
+            +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
 
         }
     }
@@ -218,7 +225,8 @@ public class ColaProcesos {
             System.out.println("  Nombre:"+temporal.getNombre()+"\n"+"  ID unico:"+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales:"+temporal.getNo_Instrucciones()+"\n"
             +"  Instrucciones ejecutadas:"+temporal.getNo_Instrucciones()+"\n"
-            +"  Direcciones de memoria asignadas:"+temporal.getNo_Instrucciones()+"\n");
+            +"  Espacio ocupado:"+temporal.getMemoria()+"\n"
+            +"  Direcciones de memoria asignadas:"+temporal.getDirBase()+"-"+temporal.getDirLimite()+"\n");
             ColaProcesosEliminados.add(temporal);
 
         }
