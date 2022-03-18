@@ -45,7 +45,8 @@ public class SimuladorProcesos {
                         System.out.println("\nHas seleccionado la opcion 1");
                         CrearProceso NewProces = new CrearProceso();
                         Proceso proc = NewProces.Crear(RAM);
-                        QUEUE.insertar_Proceso(proc);
+                        if(proc != null)
+                            QUEUE.insertar_Proceso(proc);
                         break;
 
                     case 2:

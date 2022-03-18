@@ -39,7 +39,7 @@ public class CrearProceso {
         System.out.println("Ingrese el nombre del proceso: ");
         nombre = teclado.nextLine();
         proceso.setNombre(nombre);
-        
+       
         System.out.println("\n");
         for(i=0;i<3;i++){
             System.out.println("Creando " + proceso.getNombre()+"..." );
@@ -49,13 +49,15 @@ public class CrearProceso {
                 Logger.getLogger(CrearProceso.class.getName()).log(Level.SEVERE, null, ex);
             }
         }
-        System.out.println("Proceso "+nombre+" ha sido creado");
-        
         this.asignacion_Id(proceso);
         this.asignacion_Instrucciones(proceso);  
-        this.asignacion_Memoria(proceso);
-        System.out.println("Memoria Disp Actualizada: "+this.insercion_Proceso(memoria,proceso));
-        return proceso;
+        this.asignacion_Memoria(proceso);     
+        if(this.validacionMemoria(memoria, proceso)){
+            System.out.println("Proceso "+nombre+" ha sido creado");
+            this.insercion_Proceso(memoria, proceso);
+            return proceso;
+        }
+        return null;
     }
     
     /**
@@ -66,8 +68,7 @@ public class CrearProceso {
         String id;
         Random id_num = new Random();
         id = (id_num.nextInt(1000))+"_"+proceso.getNombre();
-        proceso.setId_Proc(id);
-        System.out.println("\nid: "+proceso.getId_Proc());
+        proceso.setId_Proc(id); 
     }
     
     /**
@@ -80,8 +81,7 @@ public class CrearProceso {
         
         while(instrucciones>30)
             instrucciones = (no_ins.nextInt(30)+10);
-        proceso.setNo_Instrucciones(instrucciones);
-        System.out.println("# inst "+proceso.getNo_Instrucciones());    
+        proceso.setNo_Instrucciones(instrucciones);  
     }
     
     /**
@@ -98,9 +98,7 @@ public class CrearProceso {
         else if(inst>20 && inst<=25)
             proceso.setMemoria(256);
         else if(inst>25)
-            proceso.setMemoria(512);
-        
-        System.out.println("Memoria ocupada: "+proceso.getMemoria());
+            proceso.setMemoria(512);   
     }
     
     /**
@@ -109,15 +107,31 @@ public class CrearProceso {
      * @param proceso
      * @return
      */
-    public int insercion_Proceso(Memoria memoria, Proceso proceso){
+    public void insercion_Proceso(Memoria memoria, Proceso proceso){
         
         int mem_Ocupada = proceso.getMemoria();
         int mem_Disponible = memoria.getCapacidad();
 
-        if(mem_Disponible>mem_Ocupada)
-            memoria.insertar_Proceso(proceso);
-            
+        memoria.insertar_Proceso(proceso);   
         memoria.setCapacidad(mem_Disponible-mem_Ocupada);
-        return memoria.getCapacidad();
+        System.out.println("\nid: "+proceso.getId_Proc());
+        System.out.println("# instrucciones: "+proceso.getNo_Instrucciones()); 
+        System.out.println("Memoria ocupada: "+proceso.getMemoria());
+        System.out.println("Memoria disponible actualizada: "+memoria.getCapacidad());
+    }
+    
+    public boolean validacionMemoria(Memoria memoria, Proceso proceso){
+        int mem_Ocupada = proceso.getMemoria();
+        int mem_Disponible = memoria.getCapacidad();
+        
+        if(mem_Disponible>mem_Ocupada)
+            return true;
+        else{
+            System.out.println("No hay memoria disponible");
+            System.out.println("Memoria ocupada: "+proceso.getMemoria());
+            System.out.println("Memoria disponible : "+memoria.getCapacidad());
+            System.out.println("Fallo al crear el proceso...");
+            return false;
+        }    
     }
 }
