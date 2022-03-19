@@ -111,10 +111,10 @@ public class CrearProceso {
         while(memoria.localidades[i] !=null)
             i++;
         int base = i;
-        int limite =base+proceso.getMemoria();
+        int limite =base+proceso.getMemoria()-1;
         proceso.setDirBase(base);
         proceso.setDirLimite(limite);
-        for(j=base;j<limite;j++)
+        for(j=base;j<=limite;j++)
             memoria.localidades[j]=proceso.getNombre();
     }
     
