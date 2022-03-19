@@ -5,7 +5,7 @@
 package simuladorprocesos;
 
 import java.util.*;
-
+import simuladorprocesos.Memoria;
 /**
  *
  * @author root
@@ -20,7 +20,7 @@ public class ColaProcesos {
         NuevaColaProcesos.add(p);
     }
 
-    public void estado_actual_sistema() {
+    public void estado_actual_sistema(Memoria memoria) {
         
         System.out.println("\n >>>> Número de procesos listos:"+ NuevaColaProcesos.size());
 
@@ -81,8 +81,9 @@ public class ColaProcesos {
         } else {
             
             System.out.println("\n ----------------------- Estado de la Memoria -----------------------");
-            System.out.println("Localidades                 Proceso");
-            for (i = 1; i <= 2048; i++) { System.out.println(i+"                            "+"procesoX");}
+            System.out.println("Localidades           Proceso");
+            for(i=0;i<2048;i++)
+                System.out.println(i+"                     "+memoria.localidades[i]);
 
         }
 
@@ -226,7 +227,7 @@ public class ColaProcesos {
     }
     
 
-    public void matar_proceso_actual(){
+    public void matar_proceso_actual(Memoria memoria){
 
         int i;
         if (NuevaColaProcesos.size()==0) {
@@ -244,7 +245,7 @@ public class ColaProcesos {
             }
 
             System.out.println("\n >>>>>>> Se elimino el proceso: \n");
-            Proceso temporal = NuevaColaProcesos.removeFirst();
+            Proceso temporal = NuevaColaProcesos.removeFirst();          
             System.out.println("  Nombre: "+temporal.getNombre()+"\n"+"  ID unico: "+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales: "+temporal.getNo_Instrucciones()+"\n"
             +"  Instrucciones ejecutadas: "+temporal.getNo_InstruccionesEjecutadas()+"\n"

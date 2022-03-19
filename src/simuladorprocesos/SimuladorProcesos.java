@@ -18,6 +18,7 @@ public class SimuladorProcesos {
      */
     public static void main(String[] args) {
         Memoria RAM = new Memoria(2048);
+        RAM.llenarMem();
         ColaProcesos QUEUE = new ColaProcesos();
         Scanner sn = new Scanner(System.in);
         boolean salir = false;
@@ -51,7 +52,7 @@ public class SimuladorProcesos {
 
                     case 2:
                         System.out.println("Has seleccionado la opcion 2");
-                        QUEUE.estado_actual_sistema();
+                        QUEUE.estado_actual_sistema(RAM);
                         break;
 
                     case 3:
@@ -75,7 +76,7 @@ public class SimuladorProcesos {
 
                     case 7:
                         System.out.println("Has seleccionado la opcion 7");
-                        QUEUE.matar_proceso_actual();
+                        QUEUE.matar_proceso_actual(RAM);
                         break;
 
                     case 8:

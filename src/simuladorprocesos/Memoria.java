@@ -11,7 +11,7 @@ import java.util.ArrayList;
  * @author roble
  */
 public class Memoria {
-    public ArrayList<Proceso> mem = new ArrayList();
+    public String[] localidades = new String[2048];
     public int capacidad ;
 
     public Memoria() {
@@ -21,13 +21,13 @@ public class Memoria {
         this.capacidad = capacidad;
     }
 
-    public void insertar_Proceso(Proceso p){
-        mem.add(p);
-    }
-    public ArrayList<Proceso> getMemoria() {
-        return mem;
+    public String[] getLocalidades() {
+        return localidades;
     }
 
+    public void setLocalidades(String[] localidades) {
+        this.localidades = localidades;
+    }
 
     public int getCapacidad() {
         return capacidad;
@@ -36,14 +36,10 @@ public class Memoria {
     public void setCapacidad(int capacidad) {
         this.capacidad = capacidad;
     }
-
-    @Override
-    public String toString() {
-        return "Memoria{" + "memoria=" + mem + ", capacidad=" + capacidad + '}';
+    
+    public void llenarMem(){
+        for(int i=0;i<2048;i++)
+            this.localidades[i]=null;          
     }
-    
-    
-    
 
-    
 } 

@@ -53,8 +53,12 @@ public class CrearProceso {
         this.asignacion_Instrucciones(proceso);  
         this.asignacion_Memoria(proceso);     
         if(this.validacionMemoria(memoria, proceso)){
+            this.insercionProceso(memoria, proceso);
             System.out.println("Proceso "+nombre+" ha sido creado");
-            this.insercion_Proceso(memoria, proceso);
+            System.out.println("\nid: "+proceso.getId_Proc());
+            System.out.println("# instrucciones: "+proceso.getNo_Instrucciones()); 
+            System.out.println("Memoria ocupada: "+proceso.getMemoria());
+            System.out.println("Memoria disponible actualizada: "+memoria.getCapacidad()+"\n");
             return proceso;
         }
         return null;
@@ -101,38 +105,27 @@ public class CrearProceso {
             proceso.setMemoria(512);   
     }
     
-    /**
-     *
-     * @param memoria
-     * @param proceso
-     * @return
-     */
-    public void insercion_Proceso(Memoria memoria, Proceso proceso){
-        
-        int mem_Ocupada = proceso.getMemoria();
-        int mem_Disponible = memoria.getCapacidad();
-
-        memoria.insertar_Proceso(proceso);   
-        memoria.setCapacidad(mem_Disponible-mem_Ocupada);
-        
-        int base = 0;
-        int limite =base+mem_Ocupada;
+    public void insercionProceso(Memoria memoria, Proceso proceso){
+        int i=0;
+        int j;
+        while(memoria.localidades[i] !=null)
+            i++;
+        int base = i;
+        int limite =base+proceso.getMemoria();
         proceso.setDirBase(base);
         proceso.setDirLimite(limite);
-        
-        System.out.println("\nid: "+proceso.getId_Proc());
-        System.out.println("# instrucciones: "+proceso.getNo_Instrucciones()); 
-        System.out.println("Memoria ocupada: "+proceso.getMemoria());
-        System.out.println("Memoria disponible actualizada: "+memoria.getCapacidad()+"\n");
+        for(j=base;j<limite;j++)
+            memoria.localidades[j]=proceso.getNombre();
     }
     
     public boolean validacionMemoria(Memoria memoria, Proceso proceso){
         int mem_Ocupada = proceso.getMemoria();
         int mem_Disponible = memoria.getCapacidad();
-        
-        if(mem_Disponible>mem_Ocupada)
+   
+        if(mem_Disponible>=mem_Ocupada){
+            memoria.setCapacidad(mem_Disponible-mem_Ocupada);         
             return true;
-        else{
+        }else{
             System.out.println("\nNo hay memoria disponible");
             System.out.println("Memoria ocupada por el proceso: "+proceso.getMemoria());
             System.out.println("Memoria disponible : "+memoria.getCapacidad());
