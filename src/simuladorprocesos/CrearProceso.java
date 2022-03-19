@@ -129,7 +129,7 @@ public class CrearProceso {
             System.out.println("\nNo hay memoria disponible");
             System.out.println("Memoria ocupada por el proceso: "+proceso.getMemoria());
             System.out.println("Memoria disponible : "+memoria.getCapacidad());
-            System.out.println("Error al crear el proceso...\n");
+            System.out.println("¡Para crear nuevo proceso es necesario ejecutar o matar otros procesos!\n");
             return false;
         }    
     }
