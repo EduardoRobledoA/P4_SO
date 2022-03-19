@@ -66,7 +66,7 @@ public class SimuladorProcesos {
 
                     case 5:
                         System.out.println("Has seleccionado la opcion 5");
-                        QUEUE.ejecutar_proceso_actual();
+                        QUEUE.ejecutar_proceso_actual(RAM);
                         break;
 
                     case 6:

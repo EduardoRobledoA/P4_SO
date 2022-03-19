@@ -21,7 +21,7 @@ public class ColaProcesos {
     }
 
     public void estado_actual_sistema(Memoria memoria) {
-        
+        System.out.println("\n >>>>Memoria Disponible:"+memoria.getCapacidad());
         System.out.println("\n >>>> Número de procesos listos:"+ NuevaColaProcesos.size());
 
         int i=1;
@@ -71,21 +71,11 @@ public class ColaProcesos {
             System.out.println();
         
         }
-        
-        if (NuevaColaProcesos.size()==0) {
-
-            System.out.println("\n ----------------------- Estado de la Memoria -----------------------");
-            System.out.println("Localidades                 Proceso");
-            for (i = 1; i <= 2048; i++) { System.out.println(i+"                            "+"------");}
-
-        } else {
             
-            System.out.println("\n ----------------------- Estado de la Memoria -----------------------");
-            System.out.println("Localidades           Proceso");
-            for(i=0;i<2048;i++)
-                System.out.println(i+"                     "+memoria.localidades[i]);
-
-        }
+        System.out.println("\n ----------------------- Estado de la Memoria -----------------------");
+        System.out.println("Localidades           Proceso");
+        for(i=0;i<2048;i++)
+            System.out.println(i+"                     "+memoria.localidades[i]);
 
     }
 
@@ -132,7 +122,7 @@ public class ColaProcesos {
 
     }
 
-    public void ejecutar_proceso_actual(){
+    public void ejecutar_proceso_actual(Memoria memoria){
 
         int i;
         if (NuevaColaProcesos.size()==0) {
@@ -161,8 +151,16 @@ public class ColaProcesos {
                 
                 int totalInstrucciones = temporal.getNo_Instrucciones()+temporal.getNo_InstruccionesEjecutadas();
                 temporal.setNo_InstruccionesEjecutadas(totalInstrucciones);
-                temporal.setNo_Instrucciones(0);
-                temporal.setMemoria(0);
+                temporal.setNo_Instrucciones(0);         
+                
+                int memLib = temporal.getMemoria();
+                memoria.setCapacidad(memLib + memoria.getCapacidad());
+                
+                int base = temporal.getDirBase();
+                int limite = temporal.getDirLimite();   
+                for(i=base;i<limite;i++)
+                    memoria.localidades[i]=null;
+                
                 ColaProcesosFinalizados.add(temporal);
                 System.out.println("\n >>>> El proceso ha concluido su ejecución\n");
 
@@ -245,7 +243,15 @@ public class ColaProcesos {
             }
 
             System.out.println("\n >>>>>>> Se elimino el proceso: \n");
-            Proceso temporal = NuevaColaProcesos.removeFirst();          
+            Proceso temporal = NuevaColaProcesos.removeFirst();        
+            int memLib = temporal.getMemoria();
+            memoria.setCapacidad(memLib + memoria.getCapacidad());
+            
+            int base = temporal.getDirBase();
+            int limite = temporal.getDirLimite();   
+            for(i=base;i<limite;i++)
+                memoria.localidades[i]=null;
+            
             System.out.println("  Nombre: "+temporal.getNombre()+"\n"+"  ID unico: "+temporal.getId_Proc()+"\n"
             +"  Instrucciones totales: "+temporal.getNo_Instrucciones()+"\n"
             +"  Instrucciones ejecutadas: "+temporal.getNo_InstruccionesEjecutadas()+"\n"
